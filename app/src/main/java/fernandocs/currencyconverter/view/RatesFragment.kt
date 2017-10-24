@@ -55,6 +55,9 @@ class RatesFragment : MvvmFragment() {
 
             b.show()
         })
+        textViewErrorGetRates.setOnClickListener({
+            loadRates()
+        })
 
         loadRates()
     }
@@ -63,6 +66,7 @@ class RatesFragment : MvvmFragment() {
         rates.clear()
 
         progressBar.visibility = View.VISIBLE
+        textViewErrorGetRates.visibility = View.GONE
 
         subscribe(currencyViewModel.getRates(App.getBaseCurrency(activity))
                 .subscribeOn(Schedulers.io())
@@ -70,7 +74,9 @@ class RatesFragment : MvvmFragment() {
                 .subscribe(
                         { rates.add(it) },
                         {
+                            recyclerViewRates.adapter.notifyDataSetChanged()
                             progressBar.visibility = View.GONE
+                            textViewErrorGetRates.visibility = View.VISIBLE
                             it.printStackTrace()
                         },
                         {
