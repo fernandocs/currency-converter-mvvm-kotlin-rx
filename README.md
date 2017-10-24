@@ -20,9 +20,7 @@ Holds the business logic
 
 <img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/core.png" alt="layers"/>
 
-<img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/Screenshot_1.png" alt="layers" height="30%" width="30%"/>
-<img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/Screenshot_2.png" alt="layers" height="30%" width="30%"/>
-<img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/Screenshot_3.png" alt="layers" height="30%" width="30%"/>
+<img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/apppng" alt="layers"/>
 
 # Libraries
 
