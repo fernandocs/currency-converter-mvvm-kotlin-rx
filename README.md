@@ -18,7 +18,8 @@ Holds the business logic
 - Serves data from various sources (DB, REST Api, cache)
 
 
-# App
+<img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/core.png" alt="layers" height="50%" width="50%">
+
 <img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/Screenshot_1.png" alt="layers" height="30%" width="30%">
 <img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/Screenshot_2.png" alt="layers" height="30%" width="30%">
 <img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/Screenshot_3.png" alt="layers" height="30%" width="30%">
