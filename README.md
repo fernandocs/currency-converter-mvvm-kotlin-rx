@@ -1,4 +1,4 @@
-# MVVP
+# MVVM
 
 [![Build Status](https://travis-ci.org/fernandocs/currency-converter-mvvm-kotlin-rx.svg?branch=master)](https://travis-ci.org/fernandocs/currency-converter-mvvm-kotlin-rx)
 
