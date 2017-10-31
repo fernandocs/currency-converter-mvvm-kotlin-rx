@@ -34,6 +34,6 @@ class CurrencyRepositoryTest {
         currencyRepository.getRates("USD").test()
     }
 
-    private fun getFixtureNoRates() = Result("USD", "2017-10-23", emptyMap())
-    private fun getFixtureHasRates() = Result("USD", "2017-10-23", mapOf(Pair("BRL", 3.1936)))
+    private fun getFixtureNoRates() = Result("USD", "2017-10-23", emptyMap(), "")
+    private fun getFixtureHasRates() = Result("USD", "2017-10-23", mapOf(Pair("BRL", 3.1936)), "")
 }

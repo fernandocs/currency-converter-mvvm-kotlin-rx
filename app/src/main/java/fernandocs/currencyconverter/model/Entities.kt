@@ -1,18 +1,26 @@
 package fernandocs.currencyconverter.model
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import fernandocs.currencyconverter.App
 
 data class Result(@SerializedName("id") val base: String,
                   @SerializedName("date") val date: String,
-                  @SerializedName("rates") val rates: Map<String, Double>)
+                  @SerializedName("rates") val rates: Map<String, Double>,
+                  @SerializedName("error") val error: String)
 
 data class Rate(val name: String,
                 val value: Double) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readDouble()) {
+    }
+
+    fun getDrawableByName(context: Context): Drawable? {
+        return App.getDrawableByName(context, name)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

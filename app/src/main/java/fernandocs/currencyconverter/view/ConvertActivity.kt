@@ -23,6 +23,13 @@ class ConvertActivity : AppCompatActivity() {
 
             if (rate != null) {
                 textViewBaseCurrency.text = App.getBaseCurrency(this)
+                textViewBaseCurrency.setCompoundDrawablesWithIntrinsicBounds(App
+                        .getDrawableByName(this,
+                                App.getBaseCurrency(this)),
+                        null, null, null)
+
+                textViewConvertTo.setCompoundDrawablesWithIntrinsicBounds(rate!!
+                        .getDrawableByName(this), null, null, null)
                 editTextValue.addTextChangedListener(object : TextWatcher {
                     override fun afterTextChanged(editable: Editable?) {
                         try {
