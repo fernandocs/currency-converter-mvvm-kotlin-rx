@@ -1,12 +1,12 @@
 package fernandocs.currencyconverter.view
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.mynameismidori.currencypicker.CurrencyPicker
 import fernandocs.currencyconverter.App
 import fernandocs.currencyconverter.R
 import fernandocs.currencyconverter.model.Rate
@@ -14,13 +14,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.item_view_rate.view.*
 import kotlinx.android.synthetic.main.rates_fragment.*
+import retrofit2.HttpException
+
 
 class RatesFragment : MvvmFragment() {
 
     private var rates = mutableListOf<Rate>()
     private val currencyViewModel = App.injectCurrencyViewModel()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.rates_fragment, container, false)
     }
 
@@ -35,26 +38,22 @@ class RatesFragment : MvvmFragment() {
                     )
                 })
 
-        buttonBaseRate.text = App.getBaseCurrency(activity)
+        textViewRateName.text = App.getBaseCurrency(activity)
+        textViewRateName.setCompoundDrawablesWithIntrinsicBounds(App.getDrawableByName(activity, App.getBaseCurrency(activity)), null, null, null)
+
+        val picker = CurrencyPicker.newInstance(getString(R.string.choose_base_currency))
+        picker.setListener { _, code, _, _ ->
+            App.setBaseCurrency(activity, code)
+            textViewRateName.text = App.getBaseCurrency(activity)
+            textViewRateName.setCompoundDrawablesWithIntrinsicBounds(App.getDrawableByName(activity, App.getBaseCurrency(activity)), null, null, null)
+            loadRates()
+            picker.dismiss()
+        }
+
         buttonBaseRate.setOnClickListener({
-            val b = AlertDialog.Builder(activity)
-            b.setTitle("Choose base currency")
-            val types = arrayOf(App.baseCurrency, "EUR", "BRL")
-            b.setItems(types, {
-                dialog, which ->
-                dialog.dismiss()
-
-                when(which) {
-                    0 -> App.setBaseCurrency(activity, App.baseCurrency)
-                    1 -> App.setBaseCurrency(activity, "EUR")
-                    2 -> App.setBaseCurrency(activity, "BRL")
-                }
-                buttonBaseRate.text = App.getBaseCurrency(activity)
-                loadRates()
-            })
-
-            b.show()
+            picker.show(activity.supportFragmentManager, "CURRENCY_PICKER")
         })
+
         textViewErrorGetRates.setOnClickListener({
             loadRates()
         })
@@ -76,6 +75,13 @@ class RatesFragment : MvvmFragment() {
                         {
                             recyclerViewRates.adapter.notifyDataSetChanged()
                             progressBar.visibility = View.GONE
+                            if (it is HttpException) {
+                                textViewErrorGetRates.setText(R.string.error_get_rates)
+                                textViewErrorGetRates.isClickable = false
+                            } else {
+                                textViewErrorGetRates.setText(R.string.internet_error_get_rates)
+                                textViewErrorGetRates.isClickable = true
+                            }
                             textViewErrorGetRates.visibility = View.VISIBLE
                             it.printStackTrace()
                         },
@@ -105,7 +111,11 @@ class RatesFragment : MvvmFragment() {
             fun bind(item: Rate, position: Int) {
                 with(item) {
                     itemView.textViewRateName.text = name
-                    itemView.textViewRateValue.text = value.toString()
+                    itemView.textViewRateName
+                            .setCompoundDrawablesWithIntrinsicBounds(
+                                    getDrawableByName(itemView.context),
+                                    null, null, null)
+                    itemView.textViewRateValue.text = String.format("%.${4}f", value)
                     itemView.setOnClickListener { itemClick(this, position) }
                 }
             }

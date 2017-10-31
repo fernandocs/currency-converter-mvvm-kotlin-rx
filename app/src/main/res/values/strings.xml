@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Currency Converter</string>
-    <string name="error_get_rates">Error fetching data\nTap here to try again…</string>
+    <string name="internet_error_get_rates">Error fetching data\nTap here to try again…</string>
+    <string name="error_get_rates">Invalid base currency\nChoose another currency</string>
+    <string name="choose_base_currency">Choose base currency</string>
+    <string name="your_base_currency">Your base currency is:</string>
 </resources>

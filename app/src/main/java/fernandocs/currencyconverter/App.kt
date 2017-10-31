@@ -2,6 +2,8 @@ package fernandocs.currencyconverter
 
 import android.app.Application
 import android.content.Context
+import android.graphics.drawable.Drawable
+import android.support.v4.content.ContextCompat
 import com.google.gson.GsonBuilder
 import fernandocs.currencyconverter.repository.CurrencyRepository
 import fernandocs.currencyconverter.repository.api.FixerApi
@@ -36,6 +38,13 @@ class App : Application() {
         fun setBaseCurrency(context: Context, newBaseCurrency: String) {
             context.getSharedPreferences(App.SP_DEFAULT, Context.MODE_PRIVATE)
                     .edit().putString(App.SP_BASE_CURRENCY, newBaseCurrency).apply()
+        }
+
+        fun getDrawableByName(context: Context, nameCurrency: String): Drawable? {
+            val packageName = context.packageName
+            val resId = context.resources.getIdentifier("flag_"
+                    + nameCurrency.toLowerCase(), "drawable", packageName)
+            return if(resId != -1) ContextCompat.getDrawable(context, resId) else null
         }
     }
 
