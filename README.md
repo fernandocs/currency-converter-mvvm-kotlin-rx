@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/fernandocs/currency-converter-mvvm-kotlin-rx.svg?branch=master)](https://travis-ci.org/fernandocs/currency-converter-mvvm-kotlin-rx)
 
-Flags are from https://github.com/transferwise/currency-flags.
-
 <img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/mvvm-flow.png" alt="layers" height="80%" width="80%">
 
 ##### The View
@@ -35,3 +33,5 @@ Holds the business logic
 [Mockito Kotlin](https://github.com/nhaarman/mockito-kotlin)
 
 [Country Picker](https://github.com/mukeshsolanki/country-picker-android)
+
+Flags are from https://github.com/transferwise/currency-flags.
