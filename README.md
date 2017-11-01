@@ -1,6 +1,6 @@
 # MVVM
 
-[![Build Status](https://travis-ci.org/fernandocs/currency-converter-mvvm-kotlin-rx.svg?branch=master)](https://travis-ci.org/fernandocs/currency-converter-mvvm-kotlin-rx)
+[![Build Status](https://travis-ci.org/fernandocs/currency-converter-mvvm-kotlin-rx.svg?branch=master)](https://travis-ci.org/fernandocs/currency-converter-mvvm-kotlin-rx)[Coverage Status](https://coveralls.io/repos/fernandocs/currency-converter-mvvm-kotlin-rx/badge.svg?branch=master&service=github)](https://coveralls.io/github/fernandocs/currency-converter-mvvm-kotlin-rx?branch=master)
 
 <img src="https://raw.githubusercontent.com/fernandocs/currency-converter-mvvm-kotlin-rx/master/images/mvvm-flow.png" alt="layers" height="80%" width="80%">
 

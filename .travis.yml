@@ -9,3 +9,5 @@ android:
     - extra-android-m2repository
 
 script: ./gradlew :app:assembleDebug :app:testDebugUnitTest
+
+after_success: ./gradlew :app:jacocoTestReport :app:coveralls
